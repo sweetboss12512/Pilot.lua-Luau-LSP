@@ -6,11 +6,11 @@ type attributes = {
 	},
 }
 
---[[
+--[=[
 	# Filesystem
 	Thingy for working with the virtual file system
 	(This is incomplete)
-]]
+]=]
 type fs = {
 	attributes: attributes,
 	kind: "root",
@@ -37,11 +37,11 @@ type fs = {
 	filename: (path: string) -> string,
 	join: (...string) -> string,
 	mkdir: (self: fs, path: string) -> (),
-	--[[ 
+	--[=[ 
 		Makes a symlink between the `target` and the `linkpath`
 		@param linkPath The target destination of the symlink
 		@param target The target destination of the symlink
-	]]
+	]=]
 	mklink: (self: fs, linkPath: string, target: string) -> (),
 	moveMerge: (arg1: any, arg2: any, arg3: any) -> (),
 	new: (arg1: any) -> (),
@@ -55,7 +55,5 @@ type fs = {
 	unlink: (self: fs, linkPath: string) -> (),
 	writefile: (self: fs, path: string, contents: any) -> (),
 }
-local thing = {} :: fs
-thing:readdir()
 
 return {} :: fs

@@ -1,4 +1,9 @@
-return {} :: {
-	GetUserId: (...any) -> ...any,
-	GetUsername: (...any) -> ...any,
+--[[
+	# Players
+]]
+type players = {
+	GetUsername: (userId: number) -> string,
+	GetUserId: (username: string) -> number,
 }
+
+return {} :: players

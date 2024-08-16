@@ -1,25 +1,17 @@
-type attributes = {
-	permissions: {
-		owner: "system",
-		read: true,
-		write: false,
-	},
-}
-
 --[=[
 	# Filesystem
 	Thingy for working with the virtual file system
 	(This is incomplete)
 ]=]
 type fs = {
-	attributes: attributes,
+	attributes: FileAttributes,
 	kind: "root",
-	pwd: "/",
+	pwd: string,
 	root: {
-		attributes: attributes,
+		attributes: FileAttributes,
 		contents: {
 			[string]: {
-				attributes: attributes,
+				attributes: FileAttributes,
 				device: { [any]: any } | (...any) -> (),
 				kind: "device",
 			},
@@ -28,32 +20,41 @@ type fs = {
 		kind: "directory",
 	},
 
-	--- @return Names of every file and directory in the provided path.
-	readdir: (self: fs, path: string) -> { string },
 	--- @deprecated Currently broken?
-	chdir: (arg1: any, arg2: any) -> (), -- Broken?
-	copy: (self: fs, from: string, to: string) -> (),
-	exists: (self: fs, path: string) -> (),
-	filename: (path: string) -> string,
+	chdir: (self: fs, pathname: string) -> string,
+	--[=[
+		@param pathnameFrom The path to the contents you want to copy
+		@param pathnameTo The path you want to copy the contents to
+	]=]
+	copy: (self: fs, pathnameFrom: string, pathnameTo: string?) -> (),
+	exists: (pathname: string) -> boolean,
+	filename: (pathname: string) -> string,
 	join: (...string) -> string,
-	mkdir: (self: fs, path: string) -> (),
+	mkdir: (self: fs, pathname: string?) -> (),
 	--[=[ 
 		Makes a symlink between the `target` and the `linkpath`
 		@param linkPath The target destination of the symlink
 		@param target The target destination of the symlink
 	]=]
-	mklink: (self: fs, linkPath: string, target: string) -> (),
-	moveMerge: (arg1: any, arg2: any, arg3: any) -> (),
-	new: (arg1: any) -> (),
-	parentdir: (path: string) -> string,
-	-- pwd: (arg1: any) -> (),
-	readfile: (self: fs, path: string) -> string,
-	rename: (self: fs, path: string, newName: string) -> (),
-	resolve: (arg1: any, arg2: any) -> (),
-	separator: "/",
-	split: (path: string) -> { string },
-	unlink: (self: fs, linkPath: string) -> (),
-	writefile: (self: fs, path: string, contents: any) -> (),
+	mklink: (self: fs, linkName: string, targetName: string?) -> (),
+	moveMerge: (self: fs, pathnameFrom: string, pathnameTo: string?) -> (),
+	parentdir: (pathname: string) -> string,
+	-- pwd: (self: fs) -> string,
+	--- @return Names of every file and directory in the provided path.
+	readdir: (self: fs, pathname: string) -> { string },
+	--- @return The contents of file `filepath` as a string.
+	readfile: (self: fs, filepath: string) -> string,
+	rename: (self: fs, pathnameFrom: string, pathnameTo: string?) -> (),
+	resolve: (pathname: string) -> string,
+	separator: string,
+	split: (pathname: string) -> { string },
+	--[=[ 
+		Destroys a symlink given a path.
+		@param pathname The path to the symlink you want to destroy.
+	]=]
+	unlink: (self: fs, pathname: string) -> (),
+	--- Writes the string contents to the provided path.
+	writefile: (self: fs, filepath: string, contents: string) -> (),
 }
 
 return {} :: fs

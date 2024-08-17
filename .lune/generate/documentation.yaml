@@ -54,7 +54,7 @@ classes:
           returns:
           - number
         GetResource:
-          description: Gives you the name of the resource it contains, or the string "nil" if none (although this is likely a bug and should return actual nil, it just calls tostring on the resource kind)
+          description: Gives you the name of the resource it contains, or the string `nil` if none (although this is likely a bug and should return actual nil, it just calls tostring on the resource kind)
           returns:
           - string | "nil"
         GetResourceAmount:
@@ -965,19 +965,19 @@ classes:
         When powered, the gyro will follow its seek commands that can be configured using hammer.
         The gyro has commands that allow it to find and seek objects and players.
 
-        An example of gyro's seek configuration includes "Player1 Player2" which will seek and aim towards the nearest player.
+        An example of gyro's seek configuration includes `Player1 Player2` which will seek and aim towards the nearest player.
 
-        Putting "Radar" at the beginning of the seek configuration will make it target parts instead. For example, "Radar Gold Copper" will find the nearest Gold or Copper deposit.
+        Putting `Radar` at the beginning of the seek configuration will make it target parts instead. For example, `Radar Gold Copper` will find the nearest Gold or Copper deposit.
 
-        Putting "AllExcept" will make the seeker target everything except the given list, basically inverting it. For example, "AllExcept Player1 Player2" will target "Player3" or "Player"4 but not "Player1".
+        Putting `AllExcept` will make the seeker target everything except the given list, basically inverting it. For example, `AllExcept Player1 Player2` will target `Player3` or `Player`4 but not `Player1`.
 
-        The commands "Min" and "Max" set the minimum or maximum distance the seeker will target. For example, "Min20 Max500" will make the seeker only target objects within 500 studs and more than 20 studs away.
+        The commands `Min` and `Max` set the minimum or maximum distance the seeker will target. For example, `Min20 Max500` will make the seeker only target objects within 500 studs and more than 20 studs away.
 
         TriggerWhenSeeked will trigger all connected parts every second when the Seek configurable is satisfied
 
-        "TrigMin" and "TrigMax" work the same as "Min" and "Max" but it's for the trigger signal, trigger signal will only be sent if the above property is true.
+        `TrigMin` and `TrigMax` work the same as `Min` and `Max` but it's for the trigger signal, trigger signal will only be sent if the above property is true.
 
-        Putting "Sun" as part of the list will make the seeker automatically target the main stellar body in the system.
+        Putting `Sun` as part of the list will make the seeker automatically target the main stellar body in the system.
 
         Gyros also have a property called MaxTorque. This allows you to control the max force on the gyro to stabilize it.
       events:
@@ -1222,7 +1222,7 @@ classes:
     LifeSensor:
       categories:
       - Logic
-      description: "Senses and detects organic life up to a distnace of 2000 studs. Used mainly in programming, as is used in alien technology to hunt down organisms such as players.\nHas a special programmable event called 'GetReading()' which returns a table of all organisms, with their positions and names.\nExample:\n{\n\tPlayer1 = Vector3.new(5, 5, 5);\n}"
+      description: "Senses and detects organic life up to a distnace of 2000 studs. Used mainly in programming, as is used in alien technology to hunt down organisms such as players.\nHas a special programmable event called `GetReading()` which returns a table of all organisms, with their positions and names.\nExample:\n{\n\tPlayer1 = Vector3.new(5, 5, 5);\n}"
       methods:
         GetPlayers:
           description: Returns a table where the indexes are player names and the keys are player positions.

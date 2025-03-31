@@ -44,6 +44,12 @@ export type Object = {
 export type FunctionObject = {
 	parameters: { string | { string } }?,
 	returns: { string | { string } }?,
+	overloads: {
+		{
+			parameters: { string | { string } }?,
+			returns: { string | { string } }?,
+		}
+	}?,
 } & DescribableRaw & Typed
 
 export type FunctionDictionaryObject = {

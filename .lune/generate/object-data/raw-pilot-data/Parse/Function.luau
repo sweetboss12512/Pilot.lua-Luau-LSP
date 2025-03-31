@@ -99,6 +99,13 @@ function Function.parse(data: Types.FunctionObject, name: string?, within: strin
 			else {},
 		Returns = {},
 	}) :: any
+	local overloads = {}
+
+	if data.overloads then
+		for _, overload in data.overloads do
+			table.insert(overloads, Function.parse(overload :: any, name, within, isMethod))
+		end
+	end
 
 	if data.unknowntype then
 		table.insert(output.Parameters, { Name = "...", Type = { Luau = "any", Unknown = true } })
@@ -126,7 +133,16 @@ function Function.parse(data: Types.FunctionObject, name: string?, within: strin
 		local plainFunctionType = parseFunctionType(output, name, true)
 		local functionType = parseFunctionType(output, name, false)
 
-		output.Type.Definition = `{if not within then "declare " else ""}{functionType}`
+		if #overloads > 0 then
+			output.Type.Definition = if not within then "declare " else ""
+
+			for _, v in overloads do
+				output.Type.Definition ..= `{v.Type.Definition}\n`
+			end
+		else
+			output.Type.Definition = `{if not within then "declare " else ""}{functionType}`
+		end
+
 		output.Type.Luau = if not within then `local {plainFunctionType} = nil :: any` else plainFunctionType
 
 		if name then

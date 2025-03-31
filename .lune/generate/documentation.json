@@ -535,6 +535,22 @@
 				},
 				"extends": "Screen",
 				"methods": {
+					"GetCanvas": {
+						"description": "Returns the parent container of all the screen's content.",
+						"overloads": [
+							{
+								"returns": ["Folder"]
+							},
+							{
+								"parameters": ["context: \"2D\""],
+								"returns": ["Folder"]
+							},
+							{
+								"parameters": ["context: \"3D\""],
+								"returns": ["WorldModel"]
+							}
+						]
+					},
 					"ClearElements3D": {
 						"description": "Clears 3D elements."
 					},

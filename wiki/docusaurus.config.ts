@@ -30,6 +30,15 @@ const config: Config = {
     locales: ['en'],
   },
 
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        hashed: true,
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',

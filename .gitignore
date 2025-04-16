@@ -4,7 +4,7 @@ workspace
 # generated wiki directories
 wiki/docs/Objects/*
 wiki/docs/Programmable Objects/*
-wiki/docs/Classes/*
+wiki/docs/Types/Types/*
 
 # miscellaneous
 .DS_Store

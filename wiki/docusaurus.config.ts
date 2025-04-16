@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -64,9 +64,16 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'documentationSidebar',
+          sidebarId: 'objectsSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Objects',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'typesSidebar',
+          position: 'left',
+          label: 'Types',
+        },
         {
           type: 'docSidebar',
           sidebarId: 'helpSidebar',
@@ -107,14 +114,28 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['lua'],
+      magicComments: [
+        // Remember to extend the default highlight class name as well!
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: { start: 'highlight-start', end: 'highlight-end' },
+        },
+        {
+          className: 'code-block-error-line',
+          line: 'error-line',
+        },
+      ],
     },
-	themeConfig: {
-		colorMode: {
-		  defaultMode: 'dark',
-		  respectPrefersColorScheme: true,
-		},
-	  },
+    themeConfig: {
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: true,
+      },
+    },
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
+// vim: tabstop=2 shiftwidth=2

@@ -83,9 +83,10 @@ local Wiki = {}
 
 function Wiki.generate(options)
 	local generatedPages = {
-		["Objects"] = {},
-		["Classes"] = {},
-		["Programmable Objects"] = {},
+		["Objects/Non Programmable"] = {},
+		["Objects/Programmable"] = {},
+		["Types/Types"] = {},
+		-- ["Programmable Objects"] = {},
 	}
 	local paths = {}
 
@@ -140,9 +141,9 @@ function Wiki.generate(options)
 		end
 
 		local section = if objectData.Group == "abstractclasses"
-			then "Classes"
-			elseif objectData.IsProgrammable then "Programmable Objects"
-			else "Objects"
+			then "Types/Types"
+			elseif objectData.IsProgrammable then "Objects/Programmable"
+			else "Objects/Non Programmable"
 
 		paths[objectName] = `/docs/{section}/{objectName}.md`
 		generatedPages[section][objectName] = table.concat(output, "\n\n")

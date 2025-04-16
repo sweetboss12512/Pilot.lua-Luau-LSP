@@ -58,6 +58,11 @@ const config: Config = {
           sidebarId: 'documentationSidebar',
           position: 'left',
           label: 'Documentation',
+        {
+          type: 'docSidebar',
+          sidebarId: 'helpSidebar',
+          position: 'left',
+          label: 'Help',
         },
         {
           href: 'https://github.com/ArvidSilverlock/Pilot.lua-Luau-LSP',

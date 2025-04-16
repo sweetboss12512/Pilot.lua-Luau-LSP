@@ -447,7 +447,8 @@
 				}
 			},
 			"Tool": {
-				"extends": "PilotObject"
+				"extends": "PilotObject",
+                "description": "A tool your player can hold."
 			},
 			"UserInput": {
 				"learnmore": "https://discord.com/channels/616089055532417036/823313507167502336/1038620936896790538",

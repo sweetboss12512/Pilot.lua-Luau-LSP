@@ -162,10 +162,18 @@ local function recursiveWrite(pages, path)
 			local subpath = `{path}/{name}`
 
 			if fs.isDir(subpath) then
-				fs.removeDir(subpath)
-			end
-			fs.writeDir(subpath)
+                for _, file in fs.readDir(subpath) do
+                    if not string.match(file, "%.json$") then
+                        fs.removeFile(`{subpath}/{file}`)
+                    end
+                end
 
+                if #fs.readDir(subpath) == 0 then
+                    fs.removeDir(subpath)
+                end
+			end
+
+			fs.writeDir(subpath)
 			recursiveWrite(value, subpath)
 		else
 			fs.writeFile(`{path}/{name}.md`, value)

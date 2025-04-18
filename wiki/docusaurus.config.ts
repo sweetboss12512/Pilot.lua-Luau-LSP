@@ -95,7 +95,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/Globals',
+              to: '/docs/Types/Globals',
             },
           ],
         },

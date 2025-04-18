@@ -21,7 +21,7 @@ function HomepageHeader() {
 				<div className={styles.buttons}>
 					<Link
 						className="button button--secondary button--lg"
-						to="/docs/Globals"
+						to="/docs/Types/Globals"
 					>
 						Waste of Space Documentation
 					</Link>

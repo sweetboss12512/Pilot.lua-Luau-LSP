@@ -1922,7 +1922,7 @@
 			},
 			"Modem": {
 				"categories": ["Electrical", "Logic"],
-				"description": "A computer networking object that allows you to send, save and get messages cross-region.\nThis is an incredibly useful part to set up an internet of sorts and send data to other computers.\n\nThe modem has 5 programmable functions to it.\nSendMessage(Data, NetworkId defaults to 0) sends a message (specifically through messaging service) carrying data.\nMessageSent is a special event that can be connected to via Connect. Has one argument called Data which is the data received. \nPostRequest saves a string of data to the WoS internet ':PostRequest(Domain, Data)' (modem must be locked)\nGetRequest gets a string of data from the WoS internet ':GetRequest(Domain)'\nRealPostRequest send a POST request to the real www ':(Domain, DataPassed, AsyncBool, FuncToSendResultsTo, OptionalHeaders)'",
+				"description": "A computer networking object that allows you to send, save and get messages cross-region. Allows you to send real HTTP requests.",
 				"events": {
 					"Loop": true,
 					"MessageSent": {
@@ -1940,10 +1940,6 @@
 						],
 						"returns": ["string"]
 					},
-					"GetRequest": {
-						"parameters": ["domain: string"],
-						"returns": ["string"]
-					},
 					"PostAsync": {
 						"learnmore": "https://create.roblox.com/docs/reference/engine/classes/HttpService#PostAsync",
 						"parameters": [
@@ -1954,9 +1950,6 @@
 							"headers: { [string]: any }?"
 						],
 						"returns": ["string"]
-					},
-					"PostRequest": {
-						"parameters": ["domain: string", "data: string"]
 					},
 					"RealPostRequest": {
 						"deprecated": "Use `:PostAsync` instead.",

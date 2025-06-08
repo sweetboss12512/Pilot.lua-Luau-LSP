@@ -40,6 +40,7 @@ else
 	options.types = true
 	options.docs = true
 	options.vscode = true
+	options.luaurc = true
 	options.modules = true
 	options.wiki = false
 
@@ -112,6 +113,7 @@ generate("docs", "Documentation", true)
 
 generate("modules", "Modules", true)
 generate("vscode", "VSCode", true)
+generate("luaurc", "Luaurc", true)
 
 generate("selene", "Selene", false)
 generate("darklua", "Darklua", false)
